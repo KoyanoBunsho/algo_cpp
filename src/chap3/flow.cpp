@@ -10,7 +10,7 @@ struct Edge {
   int rev, from, to;
   FLOW cap, icap;
   Edge(int r, int f, int t, FLOW c) : rev(r), from(f), to(t), cap(c), icap(c) {}
-  friend ostream &operator<<(ostrream &s, const Edge &E) {
+  friend ostream &operator<<(ostream &s, const Edge &E) {
     if (E.cap > 0)
       return s << E.from << "->" << E.to << '(' << E.cap << ')';
     else
