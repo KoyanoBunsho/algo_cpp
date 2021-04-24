@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define rep(i, n) for (int i = 0; i < n; i++)
 
 struct t {
   int a;
@@ -34,6 +35,28 @@ struct t_const_init_vec {
   int a;
   vector<int> b;
   t_const_init_vec(int n) : a(n), b(n, 1) {}
+};
+
+struct UnionFind {
+  vector<int> par;
+  UnionFind(int N) : par(N) { rep(i, N) par[i] = i; }
+  int root(int x) {
+    if (par[x] == x)
+      return x;
+    return par[x] = root(par[x]);
+  }
+  void unite(int x, int y) {
+    int rx = root(x);
+    int ry = root(y);
+    if (rx == ry)
+      return;
+    par[rx] = ry;
+  }
+  bool same(int x, int y) {
+    int rx = root(x);
+    int ry = root(y);
+    return rx == ry;
+  }
 };
 
 int main() {
