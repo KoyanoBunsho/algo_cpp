@@ -1,0 +1,15 @@
+version: '3'
+services:
+  cpp_jupyter:
+    build: .
+    networks:
+      - rdclingnet
+    ports:
+      - "8000:9999"
+    volumes:
+      - "./notebooks:/notebooks"
+      - "./config:/config"
+
+networks:
+  rdclingnet:
+    driver: "bridge"
