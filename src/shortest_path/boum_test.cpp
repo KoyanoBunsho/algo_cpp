@@ -4,14 +4,13 @@ using namespace std;
 
 const int MAX_N = 105;
 const int MAX_M = 10005;
-vector<bool> visited(MAX_N);
-// 隣接行列か隣接リストで管理
+bool visited[MAX_N];
 vector<int> graph[MAX_N];
 
 bool dfs(int s, int p) {
   visited[s] = true;
   bool ans = true;
-  for (auto s_sub : graph[s]) {
+  for (int s_sub : graph[s]) {
     if (s_sub != p) {
       if (visited[s_sub])
         ans = false;
@@ -25,8 +24,6 @@ bool dfs(int s, int p) {
 int main() {
   int N, M;
   cin >> N >> M;
-  vector<int> u(M), v(M);
-  memset(graph, 0, sizeof(graph));
   rep(i, M) {
     int u, v;
     cin >> u >> v;
@@ -36,7 +33,7 @@ int main() {
     graph[v].push_back(u);
   }
   int ans = 0;
-  for (int i = 1; i < N; i++) {
+  rep(i, N) {
     if (!visited[i] && dfs(i, -1))
       ans++;
   }
