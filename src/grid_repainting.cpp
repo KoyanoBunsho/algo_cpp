@@ -5,51 +5,53 @@ using namespace std;
 
 const int MAX_H = 55;
 const int MAX_W = 55;
-const int INF = 100000000;
-char maze[MAX_W][MAX_H];
-int dist[MAX_W][MAX_H];
+const int INF = 1e9;
+char maze[MAX_H][MAX_W];
+int dist[MAX_H][MAX_W];
 int dx[4] = {1, 0, -1, 0};
 int dy[4] = {0, -1, 0, 1};
 int H, W;
 
 int bfs() {
   queue<P> que;
-  rep(i, W) {
-    rep(j, H) { dist[i][j] = INF; }
+  rep(i, H) {
+    rep(j, W) { dist[i][j] = INF; }
   }
-  que.push(P(0, 0));
-  dist[0][0] = 0;
+  que.push(make_pair(0, 0));
+  dist[0][0] = 1;
   while (!que.empty()) {
     P p = que.front();
     que.pop();
-    if (p.first - 1 == W && p.second == H - 1)
-      break;
     rep(i, 4) {
       int nx = p.first + dx[i];
       int ny = p.second + dy[i];
-      if (0 <= nx && nx < W && 0 <= ny && ny < H && maze[nx][ny] != '#' &&
+      if (0 <= nx && nx < H && 0 <= ny && ny < W && maze[nx][ny] != '#' &&
           dist[nx][ny] == INF) {
-        que.push(P(nx, ny));
+        que.push(make_pair(nx, ny));
         dist[nx][ny] = dist[p.first][p.second] + 1;
       }
     }
   }
-  return dist[W - 1][H - 1];
+  return dist[H - 1][W - 1];
 }
 
 int main() {
   cin >> H >> W;
-  int black = 0;
+  int white = 0;
   rep(i, H) {
     rep(j, W) {
       char s;
       cin >> s;
-      if (s == '#')
-        black++;
+      if (s == '.')
+        white++;
       maze[i][j] = s;
     }
   }
   int res = bfs();
-  cout << H * W - res - black - 1 << endl;
+  if (res < 1e9) {
+    cout << white - res << endl;
+  } else {
+    cout << -1 << endl;
+  }
   return 0;
 }
