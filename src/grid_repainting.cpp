@@ -47,6 +47,7 @@ int main() {
       maze[i][j] = s;
     }
   }
+
   int res = bfs();
   if (res < 1e9) {
     cout << white - res << endl;
