@@ -8,14 +8,14 @@ int main() {
   rep(i, M) {
     int a, b;
     cin >> a >> b;
-    a--;
-    b--;
+    a;
+    b;
     ab[a][b] = 1;
     ab[b][a] = 1;
   }
   int ans = 0;
   vector<int> perm(N);
-  rep(i, N) { perm[i] = i; };
+  rep(i, N) { perm[i] = i + 1; };
   do {
     if (perm[0] == 1) {
       bool flg = true;
