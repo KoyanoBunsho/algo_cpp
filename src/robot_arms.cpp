@@ -7,9 +7,13 @@ int main() {
   int N;
   cin >> N;
   vector<P> xl(N);
-  rep(i, N) { cin >> xl[i].second >> xl[i].first; }
+  rep(i, N) {
+    int x, l;
+    cin >> x >> l;
+    xl[i] = make_pair(x + l, x - l);
+  }
   sort(xl.begin(), xl.end());
-  int ans = 0, t = 0;
+  int ans = 0, t = -1e9;
   rep(i, N) {
     if (t <= xl[i].second) {
       ans++;
