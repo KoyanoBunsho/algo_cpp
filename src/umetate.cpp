@@ -10,7 +10,7 @@ void dfs(int sx, int sy, bool visited[][10]) {
   rep(i, 4) {
     int nx = dx[i] + sx;
     int ny = dy[i] + sy;
-    if (nx >= 0 && nx < 10 && ny >= 0 && ny < 10 && A[nx][nx] != 'x' &&
+    if (nx >= 0 && nx < 10 && ny >= 0 && ny < 10 && A[nx][ny] != 'x' &&
         !visited[nx][ny]) {
       dfs(nx, ny, visited);
     }
@@ -32,9 +32,10 @@ int main() {
       }
       if (ff) {
         cout << "YES" << endl;
-        return 0;]
+        return 0;
       }
     }
-    cout << "NO" << endl;
-    return 0;
   }
+  cout << "NO" << endl;
+  return 0;
+}
