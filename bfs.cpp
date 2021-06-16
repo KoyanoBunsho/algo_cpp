@@ -14,6 +14,7 @@ string maze[MAX_R];
 
 int bfs(int sx, int sy, int gx, int gy) {
   queue<P> que;
+  dist[sx][sy] = 0;
   que.push(make_pair(sx, sy));
   while (!que.empty()) {
     int x = que.front().first;
@@ -26,6 +27,7 @@ int bfs(int sx, int sy, int gx, int gy) {
       if (!visited[nx][ny] && nx >= 0 && nx < R && ny >= 0 && ny < C &&
           maze[nx][ny] != '#') {
         dist[nx][ny] = dist[x][y] + 1;
+        visited[nx][ny] = true;
         que.push(make_pair(nx, ny));
       }
     }
