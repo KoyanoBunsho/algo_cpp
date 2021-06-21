@@ -12,7 +12,7 @@ int main() {
   vector<int> B(M);
   rep(i, N) cin >> B[i];
   bool flg = true;
-  int i, j;
+  int i = 0, j = 0;
   for (; i < N && j < M;) {
     if (A[i] <= B[j] && B[j] <= A[i] + T) {
       ++i, ++j;
