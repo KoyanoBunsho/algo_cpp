@@ -2,7 +2,7 @@
 using namespace std;
 #define rep(i, n) for (int i = 0; i < n; i++)
 #define P pair<int, int>
-
+const int INF = 1e9;
 int main() {
   int N;
   cin >> N;
@@ -21,7 +21,7 @@ int main() {
   sort(ab.rbegin(), ab.rend());
   int ans = 0;
   rep(i, N) {
-    int min_d = LLONG_MAX, min_j;
+    int min_d = INF, min_j;
     rep(j, N) {
       if (cd[j].first > ab[i].first && cd[j].second > ab[i].second &&
           min_d > cd[j].second) {
@@ -29,7 +29,7 @@ int main() {
         min_j = j;
       }
     }
-    if (min_d != LLONG_MAX) {
+    if (min_d != INF) {
       ans++;
       cd[min_j].first = -1;
     }
