@@ -39,9 +39,11 @@ int main() {
   rep(i, m) {
     int x, y;
     cin >> x >> y;
+    x--;
+    y--;
     uf.unite(x, y);
   }
-  int ans = 0;
+  ll ans = 0;
   map<int, set<int>> perm, index;
   rep(i, n) {
     int r = uf.find(i);
