@@ -57,7 +57,7 @@ int main() {
     if (t < ct)
       continue;
     ll rt = t - ct;
-    ll tmp = rt + a[i];
+    ll tmp = rt * a[i];
     if (res < tmp)
       res = tmp;
   }
